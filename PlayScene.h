@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 class PlayScene :
-    public GameObject
+	public GameObject
 {
 public:
 	//コンストラクタ
@@ -19,5 +19,10 @@ public:
 
 	//開放
 	void Release() override;
+private:
+	//モデル用のハンドル
+	int hModel_;
+	//おでん用のトランスフォーム
+	Transform ot_;
 };
 

@@ -20,18 +20,22 @@ void PlayScene::Update()
 	static float timer = 0.0f;
 	timer += 0.016f;
 
+	//スケール
+	ot_.scale_ = { 0.5, 0.5, 0.5 };
+
 	//回転
-	ot_.rotate_.y += 1.0f;
-	ot_.rotate_.x += 0.5f;
+	//ot_.rotate_.y += 1.0f;
+	//ot_.rotate_.x += 0.5f;
 
 	//サインを使って左右に動かす
-	ot_.position_.x = sinf(timer) * 5.0f;
-	ot_.position_.y = cosf(timer * 4.0f) * 2.0f;
+	float posX = sinf(timer) * 5.0f;
+	float posY = cosf(timer * 4.0f) * 2.0f;
+	float posZ = 10;
+	ot_.position_ = { posX,posY,posZ };
 }
 
 void PlayScene::Draw()
 {
-
 	Model::SetTransform(hModel_, ot_);
 	Model::Draw(hModel_);
 }

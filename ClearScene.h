@@ -1,12 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
-class PlayScene :
-	public GameObject
+
+//テストシーンを管理するクラス
+class ClearScene : public GameObject
 {
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	PlayScene(GameObject* parent);
+	ClearScene(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -19,6 +20,7 @@ public:
 
 	//開放
 	void Release() override;
-private:
-};
 
+private:
+	int hTitlePic_; //タイトル画像のハンドル
+};

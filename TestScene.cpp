@@ -31,7 +31,7 @@ void TestScene::Update()
 void TestScene::Draw()
 {
 	//transformは、位置、回転、拡縮の情報を持った構造体
-	transform_.scale_ = { 3.0,3.0,1.0 }; //画像のサイズを変更
+	transform_.scale_ = { 1.0,1.0,1.0 }; //画像のサイズを変更
 	Image::SetTransform(hTitlePic_, transform_); //画像の位置や向きなどを設定
 	Image::Draw(hTitlePic_); //画像を描画
 }

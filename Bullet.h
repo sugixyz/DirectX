@@ -11,6 +11,7 @@ public:
 	void Release() override;
 private:
 	int hModel;
+	XMFLOAT3 velocity;
 	float speed;
 };
 

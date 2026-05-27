@@ -10,7 +10,7 @@ namespace
 }
 
 Enemy::Enemy(GameObject* parent)
-	:GameObject(parent, "Enemy"), hModel(-1),velocity(0,0,0)
+	:GameObject(parent, "Enemy"), hModel(-1)
 {
 }
 
@@ -27,9 +27,9 @@ void Enemy::Initialize()
 	XMFLOAT3 pPos = p->GetPosition();
 	XMVECTOR toPlayer = XMLoadFloat3(&pPos) - XMLoadFloat3(&transform_.position_);
 	toPlayer = XMVector3Normalize(toPlayer) * SPEED;
-	XMStoreFloat3(&velocity, toPlayer);
+	XMStoreFloat3(&velocity_, toPlayer);
 
-	transform_.rotate_.y = 90 - (atan2(velocity.z, velocity.x) * 180 / PAI);
+	transform_.rotate_.y = 90 - (atan2(velocity_.z, velocity_.x) * 180 / PAI);
 
 
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.0f);
@@ -38,9 +38,9 @@ void Enemy::Initialize()
 
 void Enemy::Update()
 {
-	transform_.position_.x += velocity.x;
-	transform_.position_.y += velocity.y;
-	transform_.position_.z += velocity.z;
+	transform_.position_.x += velocity_.x;
+	transform_.position_.y += velocity_.y;
+	transform_.position_.z += velocity_.z;
 
 	if (transform_.position_.z <= -20.0f)KillMe();
 }

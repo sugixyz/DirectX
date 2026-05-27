@@ -12,6 +12,5 @@ public:
 	void OnCollision(GameObject* pTarget) override;
 private:
 	int hModel;
-	XMFLOAT3 velocity;
 };
 

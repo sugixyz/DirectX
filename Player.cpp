@@ -27,13 +27,15 @@ void Player::Update()
 {
 	if (Input::IsKey(DIK_LEFT) || Input::IsKey(DIK_A))
 	{
-		transform_.position_.x -= 0.2;
+		transform_.position_.x -= 0.2f;
+		transform_.rotate_.y -= 2.0f;
 	}
 
 	//右移動
 	if (Input::IsKey(DIK_RIGHT) || Input::IsKey(DIK_D))
 	{
-		transform_.position_.x += 0.2;
+		transform_.position_.x += 0.2f;
+		transform_.rotate_.y += 2.0f;
 	}
 
 	//弾の発射

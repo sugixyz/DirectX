@@ -31,6 +31,9 @@ protected:
 	//衝突判定リスト
 	std::list<Collider*>	colliderList_;	
 
+	//速度
+	XMFLOAT3 velocity_;
+
 public:
 	//コンストラクタ
 	GameObject();
@@ -133,13 +136,9 @@ public:
 
 	//各アクセス関数
 	XMFLOAT3 GetPosition() { return transform_.position_; }
-	//XMFLOAT3 GetPosition()
-	//{
-	//	XMFLOAT3 pos = transform_.position_;
-	//	return pos;
-	//}
 	XMFLOAT3 GetRotate() { return transform_.rotate_; }
 	XMFLOAT3 GetScale() { return transform_.scale_; }
+	XMFLOAT3 GetVelocity() { return velocity_; }
 	XMFLOAT3 GetWorldPosition() { return Transform::Float3Add(GetParent()->transform_.position_ , transform_.position_); }
 	XMFLOAT3 GetWorldRotate() { return Transform::Float3Add(GetParent()->transform_.rotate_, transform_.rotate_); }
 	XMFLOAT3 GetWorldScale() { return Transform::Float3Add(GetParent()->transform_.scale_, transform_.scale_); }
@@ -152,6 +151,7 @@ public:
 	void SetRotateZ(float z) { SetRotate(transform_.rotate_.x, transform_.rotate_.y, z); }
 	void SetScale(XMFLOAT3 scale) { transform_.scale_ = scale; }
 	void SetScale(float x, float y, float z) { SetScale(XMFLOAT3(x, y, z)); }
+	void SetVelocity(XMFLOAT3 vel) { velocity_ = vel; }
 
 
 private:

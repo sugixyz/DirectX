@@ -2,6 +2,7 @@
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Bullet.h"
+#include"Engine/Collider.h"
 
 Player::Player(GameObject* parent)
 	:GameObject(parent,"Player"),hModel(-1)
@@ -13,8 +14,13 @@ void Player::Initialize()
 	hModel = Model::Load("StarFox.fbx");
 	assert(hModel >= 0);
 
+	hp = 5;
+
 	transform_.position_ = { transform_.position_.x,0.0f,-3.0f };
 	//transform_.scale_ = { 0.5f,0.5f,0.5f };
+
+	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 1.0f);
+	AddCollider(collider);
 }
 
 void Player::Update()
@@ -47,4 +53,13 @@ void Player::Draw()
 
 void Player::Release()
 {
+}
+
+void Player::OnCollision(GameObject* pTarget)
+{
+	if (pTarget->GetObjectName() == "Enemy" || pTarget->GetObjectName() == "Enemy")
+	{
+		pTarget->KillMe();
+		hp--;
+	}
 }

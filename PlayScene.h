@@ -20,5 +20,8 @@ public:
 	//開放
 	void Release() override;
 private:
+	//float timer = 0.0f;
+	int counter = 0;
+	int gGameCounter = 0;
 };
 

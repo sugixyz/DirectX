@@ -22,7 +22,10 @@ void Bullet::Initialize()
 
 void Bullet::Update()
 {
-	transform_.position_.z += speed;
+	transform_.position_.x += velocity_.x;
+	transform_.position_.y += velocity_.y;
+	transform_.position_.z += velocity_.z;
+
 	if (transform_.position_.z >= 100.0f)
 	{
 		KillMe();

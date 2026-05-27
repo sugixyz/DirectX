@@ -44,6 +44,10 @@ void Player::Update()
 	{
 		Bullet* b = Instantiate<Bullet>(this->GetParent());
 		b->SetPosition(transform_.position_);
+		b->SetRotate(transform_.rotate_);
+		float radY = XMConvertToRadians(transform_.rotate_.y);
+		velocity_ = XMFLOAT3(sinf(radY), 0.0f, cosf(radY));
+		b->SetVelocity(velocity_);
 	}
 }
 
